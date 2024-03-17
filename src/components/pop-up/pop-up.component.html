@@ -1,0 +1,42 @@
+<div class="">
+  <div class="popup">
+    <h1 class="text-center mb-3 fs-3 display-1">Add Task</h1>
+    <form action="" #todoData="ngForm" (ngSubmit)="handleTask()">
+      <div>
+        <input
+          type="text"
+          name="taskName"
+          id="taskName"
+          required
+          minlength="4"
+          placeholder="Enter task"
+          class="form-control"
+          [(ngModel)]="taskList.task"
+        />
+        <div
+          *ngIf="
+            todoData.controls['taskName'].touched &&
+            todoData.controls['taskName'].invalid
+          "
+          class="text-danger fw-bold"
+        >
+          <span *ngIf="todoData.errors?.['required']">
+            *This field is required
+          </span>
+          <span *ngIf="todoData.errors?.['minlength']">
+            *Minimum length of the task should be 4
+          </span>
+        </div>
+      </div>
+      <!-- <button type="button" class="btn btn-success">Edit</button>
+      <button type="button" class="btn btn-danger">Delete</button> -->
+      <button
+        [disabled]="todoData.invalid"
+        type="submit"
+        class="btn btn-success w-100 my-2"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="todo">
+  <div>
+    <h2 class="font-bold text-center bg-warning text-white px-5 py-2">
+      Todo - Application
+    </h2>
+    <div class="my-4">
+      <div class="">
+        <button
+          (click)="handlePop()"
+          class="bg-success w-100 px-3 text-white font-bold py-2 border bordeer-1 border-success fw-bold"
+        >
+          Add Task
+        </button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tasks</th>
+        </tr>
+      </thead>
+      <body>
+        <tr
+          *ngFor="let i of todosList; let j = index"
+          class="d-flex w-100 mt-2"
+        >
+          <td
+            class="d-flex w-100 justify-content-between align-items-center py-2 border-bottom-0"
+          >
+            <ng-container *ngIf="!i.isEditing; else update">
+              <div class="fw-bold">
+                {{ i.task }}
+              </div>
+              <div>
+                <button
+                  class="btn btn-success mx-2 px-3 fw-bold"
+                  (click)="handleEdit(j)"
+                >
+                  Edit
+                </button>
+                <button class="btn btn-danger fw-bold" (click)="deleteTask(j)">
+                  Cancel
+                </button>
+              </div>
+            </ng-container>
+            <ng-template #update>
+              <input
+                type="text"
+                class="form-control me-2"
+                [(ngModel)]="i.task"
+              />
+              <button
+                class="btn btn-warning fw-bold text-white"
+                (click)="updateText(j)"
+              >
+                Update
+              </button>
+            </ng-template>
+          </td>
+        </tr>
+      </body>
+    </table>
+  </div>
+</div>
