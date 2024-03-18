@@ -28,19 +28,7 @@ export class TodoComponent implements OnInit {
     this.todoService.update();
   }
   deleteTask(index: number) {
-    this.todosList[index].isEditing = false;
     this.todoService.handleDeleteTask(index);
     this.dialoge.open(DeletePopupComponent);
   }
-
-  // saveTodo() {
-  //   localStorage.setItem('todos', JSON.stringify(this.todosList));
-  // }
-
-  // loadTodosFromLocalStorage() {
-  //   const storedTodos = localStorage.getItem('todos');
-  //   if (storedTodos) {
-  //     this.todosList = JSON.parse(storedTodos);
-  //   }
-  // }
 }

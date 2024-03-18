@@ -9,15 +9,18 @@ import { TodoService } from '../../app/todo.service';
 })
 export class DeletePopupComponent {
   delelteTask: any;
+  getTodos: any = [];
   constructor(
     private dialoge: MatDialogRef<DeletePopupComponent>,
     private service: TodoService
   ) {
     this.delelteTask = this.service.removeTodo;
+    this.getTodos = this.service.todos;
   }
   deleteTodo() {
     this.delelteTask = this.service.removeTodo;
     this.service.todos.splice(this.delelteTask, 1);
+    sessionStorage.setItem('todos', JSON.stringify(this.service.todos));
     this.dialoge.close();
     setTimeout(() => {
       alert('Task has been deleted!');

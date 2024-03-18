@@ -26,10 +26,4 @@ export class TodoService {
   update() {
     sessionStorage.setItem('todos', JSON.stringify(this.todos));
   }
-
-  // handleSaveTodo(data: any) {
-  //   this.todos = data;
-  //   console.log(data);
-  //   console.log(this.todos);
-  // }
 }
